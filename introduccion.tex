@@ -1,0 +1,171 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc} 
+\usepackage[spanish]{babel} % Para soporte en español
+\usetheme{Madrid} % Puedes elegir otro tema si lo prefieres
+
+\title{Arquitectura de una Computadora}
+\subtitle{Computadoras y programas}
+\author{Irving Josue Flores Romero}
+\date{\today}
+
+\begin{document}
+	
+	\begin{frame}
+		\titlepage
+	\end{frame}
+	
+		\begin{frame}{Entscheidungsproblem}
+		
+		\begin{itemize}
+			\item \textbf{David Hilbert propuso en 1990 el Entscheidungsproblem} : Existe un algoritmo general capaz de resolver si un enunciado matematico es verdadero o falso?
+			\item \textbf{Solucón:} En 1963 Alonso Chuch y Alan Turing demostraron que no existe tal algoritmo.
+			\item \textbf{Implicaciones:} Crearon las bases de las computadoras actuales.
+		\end{itemize}
+		
+	\end{frame}
+	
+	\begin{frame}{La Máquina de Turing}
+		
+		\begin{itemize}
+			\item \textbf{Definición formal:} 
+			Una máquina de Turing es una 7-tupla $M = (Q, \Sigma, \Gamma, \delta, q_0, F, \sqcup)$, donde:
+			
+			\begin{itemize}
+				\item $Q$ es un conjunto finito de \textit{estados}.
+				\item $\Sigma$ es un conjunto finito de \textit{símbolos de entrada}.
+				\item $\Gamma$ es un conjunto finito de \textit{símbolos de cinta}, que incluye $\Sigma$.
+				\item $\delta : Q \times \Gamma \rightarrow Q \times \Gamma \times \{L, R\}$ es la \textit{función de transición}.
+				\item $q_0 \in Q$ es el \textit{estado inicial}.
+				\item $F \subset Q $ es el \textit{conjunto de estados finales}.
+				\item $\sqcup$ es el \textit{simbolo blanco}, donde $\sqcup \in \Gamma$ pero  $\sqcup \notin \Sigma$.
+			\end{itemize}
+		\end{itemize}
+		
+	\end{frame}
+	
+	\begin{frame}{Autómatas Celulares: Computación Paralela y Emergencia}
+		
+		\begin{itemize}
+			\item \textbf{Definición:} 
+			\begin{itemize}
+				\item Rejilla de celdas, cada una con un estado finito.
+				\item Reglas de transición locales que determinan cómo cambia el estado de cada celda en función de sus vecinos.
+			\end{itemize}
+			\item \textbf{Emergencia:} Patrones complejos pueden surgir de reglas simples.
+			\item \textbf{Aplicaciones:} Modelado de sistemas naturales, computación paralela.
+		\end{itemize}
+		
+	\end{frame}
+	
+	\begin{frame}{De la Teoría a la Práctica: Computadoras como Máquinas de Turing}
+		
+		\begin{itemize}
+			\item \textbf{Equivalencia computacional:} Las computadoras modernas son equivalentes en poder computacional a una máquina de Turing.
+			\item \textbf{Arquitectura de von Neumann:} Modelo de computadora basado en la máquina de Turing.
+			\item \textbf{Fundamentos teóricos:} La teoría de la computación nos permite entender las capacidades y limitaciones de las computadoras.
+		\end{itemize}
+		
+	\end{frame}
+	
+	\begin{frame}{Fundamentos Sólidos para un Futuro Computacional}
+		
+		\begin{itemize}
+			\item \textbf{Recapitulación:} Máquina de Turing, autómatas celulares, equivalencia computacional.
+			\item \textbf{Importancia de los fundamentos teóricos:} Desarrollo de software y hardware.
+			\item \textbf{Transición al siguiente tema:} Lenguajes de programación, arquitectura de computadoras, etc.
+		\end{itemize}
+		
+	\end{frame}
+	
+	
+	\begin{frame}{¿Qué es un compilador?}
+		
+		\begin{itemize}
+			\item Un compilador es un programa que traduce un programa escrito en un lenguaje de alto nivel (como C++, Java, Python) a un lenguaje de bajo nivel (como lenguaje ensamblador o código máquina).
+			\item Esta traducción permite que el programa sea ejecutado por una computadora.
+		\end{itemize}
+		
+	\end{frame}
+	
+	\begin{frame}{Compiladores, Intérpretes y Transpiladores}
+		
+		\begin{itemize}
+			\item \textbf{Compilador:} Traduce todo el código fuente a código máquina antes de la ejecución. El programa resultante se ejecuta directamente en el hardware.
+			\item \textbf{Intérprete:} Lee y ejecuta el código fuente línea por línea, sin generar un programa ejecutable independiente.
+			\item \textbf{Transpilador:} Traduce código fuente de un lenguaje de alto nivel a otro lenguaje de alto nivel. El código resultante puede ser ejecutado por otro intérprete o compilador.
+		\end{itemize}
+		
+	\end{frame}
+	
+	\begin{frame}{Etapas de la Compilación}
+		
+		\begin{figure}
+			\includegraphics[width=0.8\textwidth]{diagrama_compilador.png} % Reemplaza con la ruta a tu imagen
+			\caption{Esquema general de las etapas de un compilador}
+		\end{figure}
+		
+	\end{frame}
+	
+	\begin{frame}{Análisis Léxico}
+		
+		\begin{itemize}
+			\item El analizador léxico (o scanner) lee el código fuente carácter por carácter y lo agrupa en tokens (palabras clave, identificadores, operadores, etc.).
+			\item Ignora espacios en blanco y comentarios.
+		\end{itemize}
+		
+	\end{frame}
+	
+	\begin{frame}{Análisis Sintáctico}
+		
+		\begin{itemize}
+			\item El analizador sintáctico (o parser) verifica que la secuencia de tokens siga las reglas gramaticales del lenguaje.
+			\item Construye un árbol sintáctico que representa la estructura del programa.
+		\end{itemize}
+		
+	\end{frame}
+	
+	\begin{frame}{Análisis Semántico}
+		
+		\begin{itemize}
+			\item El analizador semántico verifica que el programa tenga sentido.
+			\item Comprueba tipos de datos, declaraciones de variables, etc.
+		\end{itemize}
+		
+	\end{frame}
+	
+	\begin{frame}{Generación de Código Intermedio}
+		
+		\begin{itemize}
+			\item Se genera una representación intermedia del programa, independiente de la máquina de destino.
+			\item Facilita la optimización y la portabilidad.
+		\end{itemize}
+		
+	\end{frame}
+	
+	\begin{frame}{Optimización}
+		
+		\begin{itemize}
+			\item Se mejora el código intermedio para que sea más eficiente (más rápido o que ocupe menos memoria).
+		\end{itemize}
+		
+	\end{frame}
+	
+	\begin{frame}{Generación de Código}
+		
+		\begin{itemize}
+			\item Se traduce el código intermedio al lenguaje de la máquina de destino.
+		\end{itemize}
+		
+	\end{frame}
+	
+	\begin{frame}{Generadores Automáticos}
+		
+		\begin{itemize}
+			\item Herramientas que facilitan la creación de analizadores léxicos y sintácticos.
+			\item Ejemplos: Lex/Flex, Yacc/Bison, ANTLR.
+			\item A partir de una especificación formal de la gramática del lenguaje, generan el código del analizador.
+		\end{itemize}
+		
+	\end{frame}
+	
+\end{document}

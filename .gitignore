@@ -1,0 +1,25 @@
+# Archivos generados por LaTeX
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.pdf
+*.ps
+*.synctex.gz
+*.toc
+
+# Archivos temporales y de caché
+*~
+*.bak
+*.swp
+*.tmp
+
+# Otros archivos que podrías querer ignorar
+*.nav
+*.snm
+*.vrb
+
