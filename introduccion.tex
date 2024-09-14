@@ -1,7 +1,9 @@
 \documentclass{beamer}
 \usepackage[utf8]{inputenc} 
 \usepackage[spanish]{babel} % Para soporte en español
+\usepackage{minted} % Importar el paquete listings
 \usetheme{Madrid} % Puedes elegir otro tema si lo prefieres
+
 
 \title{Arquitectura de una Computadora}
 \subtitle{Computadoras y programas}
@@ -52,54 +54,42 @@
 		
 	\end{frame}
 	
-		\begin{frame}{La Máquina universal de Turing}
 		
+	\begin{frame}{La Máquina universal de Turing}
+		
+		\begin{itemize}
+			\item Es posible codificar una maquina de turing en una cadena de simbolos. (Estados, funcion de transición, etc.)
+			\item Existe una maquina de Turing capaz de procesar como entrada otra maquina de Turing junto una palabra y producir el mismo resultado.
+		\end{itemize}
 		\begin{figure}
-			\includegraphics[width=0.5\textwidth]{diagrama_estados.png} 
-			\caption{Diagrama de estados de una maquina de Turing}
+			\includegraphics[width=0.5\textwidth]{maquina_universal.png}
 		\end{figure}
 		
 	\end{frame}
 	
-		\begin{frame}{Problema de la parada}
-		
-		\begin{itemize}
-			\item \textbf{Definición:} Dada	una	palabra $w$ como entrada de una maquina $M$
-		\end{itemize}
 	
-	\begin{frame}{Autómatas Celulares: Computación Paralela y Emergencia}
+	\begin{frame}{Problema de la parada}
 		
 		\begin{itemize}
-			\item \textbf{Definición:} 
-			\begin{itemize}
-				\item Rejilla de celdas, cada una con un estado finito.
-				\item Reglas de transición locales que determinan cómo cambia el estado de cada celda en función de sus vecinos.
-			\end{itemize}
-			\item \textbf{Emergencia:} Patrones complejos pueden surgir de reglas simples.
-			\item \textbf{Aplicaciones:} Modelado de sistemas naturales, computación paralela.
+			\item \textbf{Problema de la parada:} ¿Existe una maquina $M_p$ tal que dada una maquina $M$ y una palabra $w$ la maquina $M_p$ muestre como salida $p$ si la maquina $M$ termina en un numero finito de pasos o $n$ si no?.
+			\pause
+			\item \textbf{No existe!}
 		\end{itemize}
+		
 		
 	\end{frame}
 	
-	\begin{frame}{De la Teoría a la Práctica: Computadoras como Máquinas de Turing}
+		\begin{frame}{Conclusión}
 		
 		\begin{itemize}
-			\item \textbf{Equivalencia computacional:} Las computadoras modernas son equivalentes en poder computacional a una máquina de Turing.
-			\item \textbf{Arquitectura de von Neumann:} Modelo de computadora basado en la máquina de Turing.
-			\item \textbf{Fundamentos teóricos:} La teoría de la computación nos permite entender las capacidades y limitaciones de las computadoras.
+			\item Existen problema indecidibles.
+			\item Las maquinas de turing dan un indicio de como puede construirse una computadora física.
+			\item Existe una maquina universal \textit{programable}.
 		\end{itemize}
+		
 		
 	\end{frame}
 	
-	\begin{frame}{Fundamentos Sólidos para un Futuro Computacional}
-		
-		\begin{itemize}
-			\item \textbf{Recapitulación:} Máquina de Turing, autómatas celulares, equivalencia computacional.
-			\item \textbf{Importancia de los fundamentos teóricos:} Desarrollo de software y hardware.
-			\item \textbf{Transición al siguiente tema:} Lenguajes de programación, arquitectura de computadoras, etc.
-		\end{itemize}
-		
-	\end{frame}
 	
 	
 	\begin{frame}{¿Qué es un compilador?}
@@ -130,31 +120,63 @@
 		
 	\end{frame}
 	
-	\begin{frame}{Análisis Léxico}
+	\begin{frame}[fragile]{Análisis Léxico}
 		
 		\begin{itemize}
 			\item El analizador léxico (o scanner) lee el código fuente carácter por carácter y lo agrupa en tokens (palabras clave, identificadores, operadores, etc.).
 			\item Ignora espacios en blanco y comentarios.
 		\end{itemize}
-		
+		\vspace{1cm} % Espacio vertical de 1 centímetro
+		\pause
+			\begin{minted}[
+				framesep=2mm,
+				baselinestretch=1,
+				fontsize=\scriptsize,
+				obeytabs=true,tabsize=2
+				]{c}
+						int x;
+						x = 5;
+						// Lista de tokens
+						// int, x, ;, x, =, 5, ;
+			\end{minted}
 	\end{frame}
 	
-	\begin{frame}{Análisis Sintáctico}
+	\begin{frame}[fragile]{Análisis Sintáctico}
 		
 		\begin{itemize}
 			\item El analizador sintáctico (o parser) verifica que la secuencia de tokens siga las reglas gramaticales del lenguaje.
 			\item Construye un árbol sintáctico que representa la estructura del programa.
 		\end{itemize}
-		
+		\pause
+		\begin{verbatim}
+      Programa
+							/   		\
+Declaración   Asignación
+			/      			    /   \
+		int        		  x     5
+		|
+		x
+		\end{verbatim}
 	\end{frame}
 	
-	\begin{frame}{Análisis Semántico}
+	
+	\begin{frame}[fragile]{Análisis Semántico}
 		
 		\begin{itemize}
 			\item El analizador semántico verifica que el programa tenga sentido.
 			\item Comprueba tipos de datos, declaraciones de variables, etc.
 		\end{itemize}
-		
+		\pause
+		\begin{minted}[
+			framesep=2mm,
+			baselinestretch=1,
+			fontsize=\scriptsize,
+			obeytabs=true,tabsize=2
+			]{c}
+			int x;
+			x = "hola";
+			y = 4.5;
+		\end{minted}
 	\end{frame}
 	
 	\begin{frame}{Generación de Código Intermedio}
@@ -189,6 +211,42 @@
 			\item Ejemplos: Lex/Flex, Yacc/Bison, ANTLR.
 			\item A partir de una especificación formal de la gramática del lenguaje, generan el código del analizador.
 		\end{itemize}
+		
+	\end{frame}
+	
+		\begin{frame}{Ejercicio}
+		Cree un compilador que reconozca lo siguiente
+		\begin{itemize}
+			\item Debe recibir el comando \texttt{saludo} seguido de los nombres que se necesitan saludar separados por espacio.
+			\item Los nombres pueden ser un string cualquiera o un hashtag seguido de uno de los siguientes sujetos \texttt{\#cantante}, \texttt{\#actor}, \texttt{\#prota}.
+			\item La salida del programa debe ser un programa en \textit{c} o \textit{python} que ejecute los saludos.
+		\end{itemize}
+		
+	\end{frame}
+	
+		\begin{frame}[fragile]{Ejercicio}
+			Entrada al compilador
+		\begin{minted}[
+			frame=lines,
+	framesep=2mm,
+	baselinestretch=1,
+	fontsize=\scriptsize,
+	obeytabs=true,tabsize=2
+	]{vim}
+	saludo irving @pi_314 #prota
+\end{minted}
+Salida al compilador
+		\begin{minted}[
+	frame=lines,
+	framesep=2mm,
+	baselinestretch=1,
+	fontsize=\scriptsize,
+	obeytabs=true,tabsize=2
+	]{vim}
+	print("Hola irving")
+	print("Hola @pi_314")
+	print("Hola Eren Jaeger")
+\end{minted}
 		
 	\end{frame}
 	
