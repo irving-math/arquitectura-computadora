@@ -1,6 +1,6 @@
 import re
 
-REG_EXP = re.compile("saluda|((. )+|.+)")
+REG_EXP = re.compile("saluda ((.+ )|.+)+")
 
 
 def lexical_analyzer(cadena):
