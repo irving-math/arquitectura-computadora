@@ -24,4 +24,5 @@
 *.vrb
 
 .idea/
+python/__pycache__/
 
