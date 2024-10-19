@@ -1,5 +1,5 @@
-from irregular.token import Token
-from irregular.token import TokenType
+from irregular.tokens import Token
+from irregular.tokens import TokenType
 
 def error(word):
     raise Exception(f"{word} is an invalid token")
