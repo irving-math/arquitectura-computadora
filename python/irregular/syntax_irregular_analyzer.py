@@ -30,33 +30,55 @@ def analyze_parameters(tokens):
     else:
         return []
 
-def analyze_arithmetic(tokens):
-    term = parse_term(tokens)
+def analyze_exp(tokens):
+    term = analyze_term(tokens)
     if tokens:
         if tokens[-1].token_type == TokenType.OPERATOR and (tokens[-1].word == '+' or tokens[-1].word == '-'):
             operator = tokens.pop()
-            return (operator, analyze_arithmetic(tokens), term)
+            return (operator, analyze_exp(tokens), term)
         else:
-            raise Exception(f'Unexpected token: {tokens[0]}, expected "+" or "-"')
+            raise Exception(f'Unexpected token: {tokens[-1]}, expected "+" or "-"')
     else:
         return term
 
-def parse_term(tokens):
-    pass
+def analyze_term(tokens):
+    factor = analyze_factor(tokens)
+    if tokens:
+        if tokens[-1].token_type == TokenType.OPERATOR and (tokens[-1].word == '*' or tokens[-1].word == '/'):
+            operator = tokens.pop()
+            return (operator, analyze_term(tokens), factor)
+        else:
+            raise Exception(f'Unexpected token: {tokens[-1]}, expected "*" or "/"')
+    else:
+        return factor
 
-def parse_factor(tokens):
-    pass
+def analyze_factor(tokens):
+    i = len(tokens) - 1
+    while i > 0 and tokens[i] != '*' and tokens[i] != '/':
+        i = i - 1
+    if i == 0:
+        if tokens[i] == '*' or tokens[i] == '/':
+            raise Exception(f'Tokens: {tokens}, starts with "*" or "/"')
+        else:
+           new_tokens = tokens[:]
+           tokens.clear()
+    else:
+        tokens = tokens[:i+1]
+        new_tokens = tokens[i+1:]
+    if len(new_tokens) == 1 and (
+            new_tokens[0].token_type == TokenType.IDENTIFIER or new_tokens[0].token_type == TokenType.FLOAT
+    ):
+        return new_tokens[0].word
+    elif new_tokens[0] == '(' and new_tokens[-1] == ')':
+        return analyze_exp(new_tokens[1:-1])
+
+    else:
+        raise Exception(f'Unexpected tokens: {tokens}')
 
 
 
-
-
-
-
-print(analyze_parameters([
-    Token(word='hola', token_type=TokenType.IDENTIFIER),
-    Token(word='3', token_type=TokenType.FLOAT),
-    Token(word='hello', token_type=TokenType.IDENTIFIER),
-    Token(word='=', token_type=TokenType.EQUAL),
+print(analyze_exp([
+    Token(word='2', token_type=TokenType.FLOAT),
+    Token(word='+', token_type=TokenType.FLOAT),
     Token(word='3', token_type=TokenType.FLOAT),
 ]))
