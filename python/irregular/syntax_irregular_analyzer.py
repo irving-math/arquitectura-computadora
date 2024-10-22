@@ -31,54 +31,58 @@ def analyze_parameters(tokens):
         return []
 
 def analyze_exp(tokens):
-    term = analyze_term(tokens)
-    if tokens:
-        if tokens[-1].token_type == TokenType.OPERATOR and (tokens[-1].word == '+' or tokens[-1].word == '-'):
-            operator = tokens.pop()
-            return (operator, analyze_exp(tokens), term)
-        else:
-            raise Exception(f'Unexpected token: {tokens[-1]}, expected "+" or "-"')
+    i = 0
+    parenthesis_count = 0
+    while i < len(tokens) and (parenthesis_count != 0 or (tokens[i].word != '+' and tokens[i].word != '-' )):
+        if tokens[i].word == '(':
+            parenthesis_count += 1
+        if tokens[i].word == ')':
+            parenthesis_count -= 1
+        i += 1
+    if i == len(tokens):
+        return analyze_term(tokens)
+    elif i == len(tokens) - 1 or i == 0:
+        raise Exception(f'Operator + or - without a term')
     else:
-        return term
+        return tokens[i].word, analyze_term(tokens[:i]), analyze_exp(tokens[i + 1:])
 
 def analyze_term(tokens):
-    factor = analyze_factor(tokens)
-    if tokens:
-        if tokens[-1].token_type == TokenType.OPERATOR and (tokens[-1].word == '*' or tokens[-1].word == '/'):
-            operator = tokens.pop()
-            return (operator, analyze_term(tokens), factor)
-        else:
-            raise Exception(f'Unexpected token: {tokens[-1]}, expected "*" or "/"')
+    i = 0
+    parenthesis_count = 0
+    while i < len(tokens) and (parenthesis_count!= 0 or (tokens[i].word != '*' and tokens[i].word != '/')):
+        if tokens[i].word == '(':
+            parenthesis_count += 1
+        if tokens[i].word == ')':
+            parenthesis_count -= 1
+        i += 1
+    if i == len(tokens):
+        return analyze_factor(tokens)
+    elif i == len(tokens) - 1 or i == 0:
+        raise Exception(f'Operator * or / without a term')
     else:
-        return factor
+        return tokens[i].word, analyze_factor(tokens[:i]), analyze_term(tokens[i + 1:])
 
 def analyze_factor(tokens):
-    i = len(tokens) - 1
-    while i > 0 and tokens[i] != '*' and tokens[i] != '/':
-        i = i - 1
-    if i == 0:
-        if tokens[i] == '*' or tokens[i] == '/':
-            raise Exception(f'Tokens: {tokens}, starts with "*" or "/"')
+    if tokens[0].word == '(':
+        if tokens[-1].word == ')':
+            return analyze_exp(tokens[1:-1])
         else:
-           new_tokens = tokens[:]
-           tokens.clear()
+            raise Exception(f'( without a close -> )')
     else:
-        tokens = tokens[:i+1]
-        new_tokens = tokens[i+1:]
-    if len(new_tokens) == 1 and (
-            new_tokens[0].token_type == TokenType.IDENTIFIER or new_tokens[0].token_type == TokenType.FLOAT
-    ):
-        return new_tokens[0].word
-    elif new_tokens[0] == '(' and new_tokens[-1] == ')':
-        return analyze_exp(new_tokens[1:-1])
+        if tokens[0].token_type == TokenType.IDENTIFIER or tokens[0].token_type == TokenType.FLOAT:
+            return tokens[0].word
+        else:
+            raise Exception(f'Unexpected token: {tokens[0]}, expected a float or identifier')
 
-    else:
-        raise Exception(f'Unexpected tokens: {tokens}')
 
 
 
 print(analyze_exp([
-    Token(word='2', token_type=TokenType.FLOAT),
-    Token(word='+', token_type=TokenType.FLOAT),
+    Token(word='(', token_type=TokenType.PUNCTUATION),
     Token(word='3', token_type=TokenType.FLOAT),
+    Token(word='*', token_type=TokenType.OPERATOR),
+    Token(word='8', token_type=TokenType.FLOAT),
+    Token(word=')', token_type=TokenType.PUNCTUATION),
+    Token(word='+', token_type=TokenType.OPERATOR),
+    Token(word='hola', token_type=TokenType.FLOAT),
 ]))
