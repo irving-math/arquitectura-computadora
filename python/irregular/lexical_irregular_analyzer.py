@@ -104,18 +104,18 @@ def analyzer_string(line):
     i = 0
     while i < len(line_with_spaces):
         if line_with_spaces[i] == ' ':
-            tokens.append(buffer)
+            if buffer != '':
+                tokens.append(buffer)
             buffer = ""
-            while line_with_spaces[i] == ' ':
+            while i < len(line_with_spaces) and line_with_spaces[i] == ' ':
                 i = i + 1
             continue
         else:
             buffer = buffer + line_with_spaces[i]
         i = i + 1
-    tokens.append(buffer)
+    if buffer != '':
+        tokens.append(buffer)
     real_tokens = []
     for string_list in tokens:
         real_tokens.append(analyzer(string_list))
     return real_tokens
-
-print(analyzer_string("function area base altura = (base * altura)/2"))

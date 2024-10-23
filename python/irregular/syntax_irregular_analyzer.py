@@ -1,4 +1,5 @@
 from irregular.tokens import TokenType, Token
+from irregular.lexical_irregular_analyzer import analyzer_string
 
 functions_set = set()
 
@@ -12,9 +13,6 @@ def analyzer(tokens):
     if token.token_type != TokenType.IDENTIFIER:
         raise Exception(f'Unexpected token: {token}, expected a function name identifier')
     functions_set.add(token.word)
-
-    parameters = analyze_parameters(tokens)
-    expresion = analyze_arithmetic(tokens)
 
 
 def analyze_parameters(tokens):
@@ -77,12 +75,6 @@ def analyze_factor(tokens):
 
 
 
-print(analyze_exp([
-    Token(word='(', token_type=TokenType.PUNCTUATION),
-    Token(word='3', token_type=TokenType.FLOAT),
-    Token(word='*', token_type=TokenType.OPERATOR),
-    Token(word='8', token_type=TokenType.FLOAT),
-    Token(word=')', token_type=TokenType.PUNCTUATION),
-    Token(word='+', token_type=TokenType.OPERATOR),
-    Token(word='hola', token_type=TokenType.FLOAT),
-]))
+print(analyze_exp(
+    analyzer_string("(39 + 48)/(45 + 7) - (8 * (7 + 8 * 8))")
+))
