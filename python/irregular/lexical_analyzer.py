@@ -17,16 +17,6 @@ def new_state(letter, current_state):
     else:
         raise Exception(f"{letter} is an invalid letter")
 
-def state_keyword(current_letter, expected_letter, new_state):
-    if current_letter == expected_letter:
-        return new_state
-    elif current_letter.isalpha():
-        return 2
-    elif current_letter == '_':
-        return 3
-    else:
-        raise Exception(f"{current_letter} is an invalid letter")
-
 def analyzer(word):
     state = 1
     for letter in word:
@@ -119,3 +109,6 @@ def analyzer_string(line):
     for string_list in tokens:
         real_tokens.append(analyzer(string_list))
     return real_tokens
+
+if __name__ == '__main__':
+    print(analyzer_string("function promedio x y = (x +y )/ 2"))

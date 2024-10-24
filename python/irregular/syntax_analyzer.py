@@ -1,8 +1,8 @@
-from irregular.tokens import TokenType, Token
-from irregular.lexical_irregular_analyzer import analyzer_string
+from irregular.tokens import TokenType
+from irregular.lexical_analyzer import analyzer_string
 
 functions_set = set()
-
+param_set = set()
 
 def analyzer(tokens):
     token = tokens.pop(0)
@@ -13,7 +13,10 @@ def analyzer(tokens):
     if token.token_type != TokenType.IDENTIFIER:
         raise Exception(f'Unexpected token: {token}, expected a function name identifier')
     functions_set.add(token.word)
-
+    params = analyze_parameters(tokens)
+    param_set.update(params)
+    tree = analyze_exp(tokens)
+    return functions_set, param_set, tree
 
 def analyze_parameters(tokens):
     if tokens:
@@ -74,7 +77,9 @@ def analyze_factor(tokens):
 
 
 
-
-print(analyze_exp(
-    analyzer_string("(39 + 48)/(45 + 7) - (8 * (7 + 8 * 8))")
-))
+if __name__ == '__main__':
+    print(analyzer(analyzer_string("function suma c d f = d + f")))
+    print("functions defined:")
+    print(functions_set)
+    print("parameters defined:")
+    print(param_set)
