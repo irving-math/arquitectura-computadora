@@ -71,14 +71,14 @@ def analyze_factor(tokens):
             raise Exception(f'( without a close -> )')
     else:
         if tokens[0].token_type == TokenType.IDENTIFIER or tokens[0].token_type == TokenType.FLOAT:
-            return tokens[0].word
+            return tokens[0]
         else:
             raise Exception(f'Unexpected token: {tokens[0]}, expected a float or identifier')
 
 
 
 if __name__ == '__main__':
-    print(analyzer(analyzer_string("function suma c d f = d + f")))
+    print(analyzer(analyzer_string("function suma c d = c + d")))
     print("functions defined:")
     print(functions_set)
     print("parameters defined:")
