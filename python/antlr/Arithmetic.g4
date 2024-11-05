@@ -2,6 +2,8 @@ grammar Arithmetic;
 
 FLOAT: [0-9]+;
 
+program: expr EOF;
+
 expr: term '+' expr # Sum
     | term '-' expr # Substraction
     | term # TermOnly

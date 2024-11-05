@@ -8,6 +8,15 @@ else:
 # This class defines a complete listener for a parse tree produced by ArithmeticParser.
 class ArithmeticListener(ParseTreeListener):
 
+    # Enter a parse tree produced by ArithmeticParser#program.
+    def enterProgram(self, ctx:ArithmeticParser.ProgramContext):
+        pass
+
+    # Exit a parse tree produced by ArithmeticParser#program.
+    def exitProgram(self, ctx:ArithmeticParser.ProgramContext):
+        pass
+
+
     # Enter a parse tree produced by ArithmeticParser#Sum.
     def enterSum(self, ctx:ArithmeticParser.SumContext):
         pass

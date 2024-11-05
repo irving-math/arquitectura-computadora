@@ -5,10 +5,10 @@ from antlr.ArithmeticLexer import ArithmeticLexer
 from antlr.ArithmeticParser import ArithmeticParser
 
 if __name__ == '__main__':
-    code_string = '3 * 3'
+    code_string = '(3 * 3 )'
     input_stream = InputStream(code_string)
     lexer = ArithmeticLexer(input_stream)
     stream = CommonTokenStream(lexer)
     parser = ArithmeticParser(stream)
-    tree = parser.expr()
+    tree = parser.program()
     print(tree.toStringTree())

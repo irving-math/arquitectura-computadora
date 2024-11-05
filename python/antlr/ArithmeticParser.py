@@ -10,17 +10,18 @@ else:
 
 def serializedATN():
     return [
-        4,1,8,36,2,0,7,0,2,1,7,1,2,2,7,2,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,
-        1,0,3,0,16,8,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,1,27,8,1,1,
-        2,1,2,1,2,1,2,1,2,3,2,34,8,2,1,2,0,0,3,0,2,4,0,0,37,0,15,1,0,0,0,
-        2,26,1,0,0,0,4,33,1,0,0,0,6,7,3,2,1,0,7,8,5,1,0,0,8,9,3,0,0,0,9,
-        16,1,0,0,0,10,11,3,2,1,0,11,12,5,2,0,0,12,13,3,0,0,0,13,16,1,0,0,
-        0,14,16,3,2,1,0,15,6,1,0,0,0,15,10,1,0,0,0,15,14,1,0,0,0,16,1,1,
-        0,0,0,17,18,3,4,2,0,18,19,5,3,0,0,19,20,3,2,1,0,20,27,1,0,0,0,21,
-        22,3,4,2,0,22,23,5,4,0,0,23,24,3,2,1,0,24,27,1,0,0,0,25,27,3,4,2,
-        0,26,17,1,0,0,0,26,21,1,0,0,0,26,25,1,0,0,0,27,3,1,0,0,0,28,34,5,
-        7,0,0,29,30,5,5,0,0,30,31,3,0,0,0,31,32,5,6,0,0,32,34,1,0,0,0,33,
-        28,1,0,0,0,33,29,1,0,0,0,34,5,1,0,0,0,3,15,26,33
+        4,1,8,41,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,1,0,1,0,1,0,1,1,1,1,1,1,
+        1,1,1,1,1,1,1,1,1,1,1,1,3,1,21,8,1,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,
+        2,1,2,3,2,32,8,2,1,3,1,3,1,3,1,3,1,3,3,3,39,8,3,1,3,0,0,4,0,2,4,
+        6,0,0,41,0,8,1,0,0,0,2,20,1,0,0,0,4,31,1,0,0,0,6,38,1,0,0,0,8,9,
+        3,2,1,0,9,10,5,0,0,1,10,1,1,0,0,0,11,12,3,4,2,0,12,13,5,1,0,0,13,
+        14,3,2,1,0,14,21,1,0,0,0,15,16,3,4,2,0,16,17,5,2,0,0,17,18,3,2,1,
+        0,18,21,1,0,0,0,19,21,3,4,2,0,20,11,1,0,0,0,20,15,1,0,0,0,20,19,
+        1,0,0,0,21,3,1,0,0,0,22,23,3,6,3,0,23,24,5,3,0,0,24,25,3,4,2,0,25,
+        32,1,0,0,0,26,27,3,6,3,0,27,28,5,4,0,0,28,29,3,4,2,0,29,32,1,0,0,
+        0,30,32,3,6,3,0,31,22,1,0,0,0,31,26,1,0,0,0,31,30,1,0,0,0,32,5,1,
+        0,0,0,33,39,5,7,0,0,34,35,5,5,0,0,35,36,3,2,1,0,36,37,5,6,0,0,37,
+        39,1,0,0,0,38,33,1,0,0,0,38,34,1,0,0,0,39,7,1,0,0,0,3,20,31,38
     ]
 
 class ArithmeticParser ( Parser ):
@@ -38,11 +39,12 @@ class ArithmeticParser ( Parser ):
     symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "FLOAT", "WHITE_CHAR" ]
 
-    RULE_expr = 0
-    RULE_term = 1
-    RULE_factor = 2
+    RULE_program = 0
+    RULE_expr = 1
+    RULE_term = 2
+    RULE_factor = 3
 
-    ruleNames =  [ "expr", "term", "factor" ]
+    ruleNames =  [ "program", "expr", "term", "factor" ]
 
     EOF = Token.EOF
     T__0=1
@@ -61,6 +63,53 @@ class ArithmeticParser ( Parser ):
         self._predicates = None
 
 
+
+
+    class ProgramContext(ParserRuleContext):
+        __slots__ = 'parser'
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def expr(self):
+            return self.getTypedRuleContext(ArithmeticParser.ExprContext,0)
+
+
+        def EOF(self):
+            return self.getToken(ArithmeticParser.EOF, 0)
+
+        def getRuleIndex(self):
+            return ArithmeticParser.RULE_program
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterProgram" ):
+                listener.enterProgram(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitProgram" ):
+                listener.exitProgram(self)
+
+
+
+
+    def program(self):
+
+        localctx = ArithmeticParser.ProgramContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 0, self.RULE_program)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 8
+            self.expr()
+            self.state = 9
+            self.match(ArithmeticParser.EOF)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
 
 
     class ExprContext(ParserRuleContext):
@@ -147,37 +196,37 @@ class ArithmeticParser ( Parser ):
     def expr(self):
 
         localctx = ArithmeticParser.ExprContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 0, self.RULE_expr)
+        self.enterRule(localctx, 2, self.RULE_expr)
         try:
-            self.state = 15
+            self.state = 20
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,0,self._ctx)
             if la_ == 1:
                 localctx = ArithmeticParser.SumContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 6
+                self.state = 11
                 self.term()
-                self.state = 7
+                self.state = 12
                 self.match(ArithmeticParser.T__0)
-                self.state = 8
+                self.state = 13
                 self.expr()
                 pass
 
             elif la_ == 2:
                 localctx = ArithmeticParser.SubstractionContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 10
+                self.state = 15
                 self.term()
-                self.state = 11
+                self.state = 16
                 self.match(ArithmeticParser.T__1)
-                self.state = 12
+                self.state = 17
                 self.expr()
                 pass
 
             elif la_ == 3:
                 localctx = ArithmeticParser.TermOnlyContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
-                self.state = 14
+                self.state = 19
                 self.term()
                 pass
 
@@ -275,37 +324,37 @@ class ArithmeticParser ( Parser ):
     def term(self):
 
         localctx = ArithmeticParser.TermContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 2, self.RULE_term)
+        self.enterRule(localctx, 4, self.RULE_term)
         try:
-            self.state = 26
+            self.state = 31
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,1,self._ctx)
             if la_ == 1:
                 localctx = ArithmeticParser.TimesContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 17
+                self.state = 22
                 self.factor()
-                self.state = 18
+                self.state = 23
                 self.match(ArithmeticParser.T__2)
-                self.state = 19
+                self.state = 24
                 self.term()
                 pass
 
             elif la_ == 2:
                 localctx = ArithmeticParser.DivisionContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 21
+                self.state = 26
                 self.factor()
-                self.state = 22
+                self.state = 27
                 self.match(ArithmeticParser.T__3)
-                self.state = 23
+                self.state = 28
                 self.term()
                 pass
 
             elif la_ == 3:
                 localctx = ArithmeticParser.FactorOnlyContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
-                self.state = 25
+                self.state = 30
                 self.factor()
                 pass
 
@@ -377,25 +426,25 @@ class ArithmeticParser ( Parser ):
     def factor(self):
 
         localctx = ArithmeticParser.FactorContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 4, self.RULE_factor)
+        self.enterRule(localctx, 6, self.RULE_factor)
         try:
-            self.state = 33
+            self.state = 38
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [7]:
                 localctx = ArithmeticParser.FloatOnlyContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 28
+                self.state = 33
                 self.match(ArithmeticParser.FLOAT)
                 pass
             elif token in [5]:
                 localctx = ArithmeticParser.ParenthesisContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 29
+                self.state = 34
                 self.match(ArithmeticParser.T__4)
-                self.state = 30
+                self.state = 35
                 self.expr()
-                self.state = 31
+                self.state = 36
                 self.match(ArithmeticParser.T__5)
                 pass
             else:
