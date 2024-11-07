@@ -1,0 +1,2 @@
+function area base altura = base * altura
+function area_triangulo base altura = (area base altura)/2
