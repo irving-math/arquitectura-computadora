@@ -11,22 +11,40 @@ class SemanticListener(IrregularListener):
     parameters = None
 
     def __init__(self):
-        self.parameters = set()
+        self.parameters = dict()
+
+    def enterEveryRule(self, ctx):
+        if hasattr(ctx, 'function_name'):
+            children = ctx.getChildren()
+            for child in children:
+                child.function_name = ctx.function_name
+
+    def enterFunction(self, ctx:IrregularParser.FunctionContext):
+        function_name_node = ctx.function_name()
+        function_name = function_name_node.getText()
+        params_node = ctx.params()
+        params_node.function_name = function_name
+        exp_node = ctx.expr()
+        exp_node.function_name = function_name
 
     def exitParams(self, ctx:IrregularParser.ParamsContext):
         children = ctx.getChildren()
+        params = set()
         for child in children:
-            self.parameters.add(child.getText())
-        print(self.parameters)
+            params.add(child.getText())
+
+        self.parameters[ctx.function_name] = params
 
     def exitIdentifierOnly(self, ctx:IrregularParser.IdentifierOnlyContext):
-        param = ctx.IDENTIFIER().getText()
-        if param not in self.parameters:
-            raise Exception(f"{param} is not defined as a parameter")
+        if ctx.IDENTIFIER().getText() not in self.parameters[ctx.function_name]:
+            raise Exception(f"El parametro {ctx.IDENTIFIER().getText()} no esta definido para {ctx.function_name}")
 
 
 if __name__ == '__main__':
-    code_string = 'function gray_scale r g b = (f + g + b)/3'
+    code_string = """
+function gray_scale red green blue = (red + g + blue)/3
+function gray_scale_red r g b = green
+"""
     input_stream = InputStream(code_string)
     lexer = IrregularLexer(input_stream)
     stream = CommonTokenStream(lexer)
@@ -34,4 +52,5 @@ if __name__ == '__main__':
     tree = parser.program()
     walker = ParseTreeWalker()
     listener = SemanticListener()
-    walker.walk(listener, tree) # Le indicamos al programa que camine sobre el arbol con el listener dado
+    walker.walk(listener, tree)
+    # Le indicamos al programa que camine sobre el arbol con el listener dado
