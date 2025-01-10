@@ -1,0 +1,101 @@
+Nombre,Edad,Salario,Localidad,Genero,Fecha de nacimiento
+Miguel,65,80184.16,Nuevo Leon#Apodaca,Femenino,1993-11-20
+Sofia,46,15432.57,Veracruz#Xalapa,Femenino,1996-10-23
+Carmen,58,66860.41,Nuevo Leon#San Pedro Garza Garcia,Femenino,1962-02-02
+Miguel,64,52216.06,Yucatan#Merida,Masculino,1957-07-24
+Sofia,24,83208.07,Yucatan#Merida,Femenino,1981-06-02
+Ana,59,34709.7,Yucatan#Merida,Femenino,1956-09-19
+Angela,58,86237.25,Veracruz#Coatzacoalcos,Femenino,1994-07-01
+Sofia,18,49058.89,Veracruz#Coatzacoalcos,Femenino,1968-09-11
+Juan,48,16380.76,Jalisco#Guadalajara,Masculino,2000-03-14
+Sofia,24,59052.88,Nuevo Leon#Apodaca,Femenino,1976-04-07
+Juan,21,58710.98,Yucatan#Valladolid,Masculino,1982-08-23
+Pedro,26,62489.21,Veracruz#Coatzacoalcos,Femenino,1973-01-08
+Maria,34,35836.78,Veracruz#Coatzacoalcos,Femenino,1991-11-26
+Ana,27,64196.67,Nuevo Leon#San Pedro Garza Garcia,Femenino,1996-12-16
+Carmen,50,23167.49,Yucatan#Valladolid,Femenino,1964-12-26
+Juan,54,23942.07,Jalisco#Puerto Vallarta,Femenino,1994-03-01
+Juan,30,11734.36,Nuevo Leon#Apodaca,Masculino,1983-06-25
+Miguel,41,42738.97,Jalisco#Zapopan,Femenino,2001-05-30
+Angela,25,97603.52,Nuevo Leon#San Pedro Garza Garcia,Femenino,1954-12-25
+Luis,25,17855.0,Nuevo Leon#San Pedro Garza Garcia,Masculino,1985-04-30
+Luis,38,42928.31,Nuevo Leon#Apodaca,Femenino,1984-06-18
+Sofia,27,50431.64,Ciudad de Mexico#Cuauhtemoc,Femenino,1960-05-19
+Pedro,36,47561.84,Veracruz#Xalapa,Masculino,1951-08-20
+Sofia,19,78353.73,Nuevo Leon#Monterrey,Femenino,1966-02-26
+Ana,33,37020.28,Jalisco#Puerto Vallarta,Masculino,1984-08-08
+Juan,23,60098.71,Yucatan#Progreso,Masculino,1996-12-08
+Ana,51,79674.85,Ciudad de Mexico#Benito Juarez,Femenino,1958-12-10
+Maria,50,24030.53,Jalisco#Zapopan,Masculino,1971-04-17
+Miguel,27,36424.91,Jalisco#Guadalajara,Femenino,1957-11-23
+Jose,35,60147.99,Ciudad de Mexico#Miguel Hidalgo,Masculino,1981-01-12
+Ana,47,56396.61,Veracruz#Veracruz,Masculino,1970-09-19
+Juan,23,69683.17,Nuevo Leon#Monterrey,Femenino,1976-07-17
+Carmen,32,54746.36,Ciudad de Mexico#Benito Juarez,Femenino,1974-04-26
+Luis,40,51145.69,Nuevo Leon#San Pedro Garza Garcia,Masculino,1966-12-02
+Juan,33,32714.91,Veracruz#Coatzacoalcos,Masculino,1986-07-18
+Juan,25,59923.2,Ciudad de Mexico#Miguel Hidalgo,Femenino,1983-07-26
+Carmen,37,96500.84,Nuevo Leon#Monterrey,Femenino,1991-06-17
+Miguel,32,97756.95,Jalisco#Puerto Vallarta,Masculino,1955-08-31
+Miguel,59,52963.15,Ciudad de Mexico#Cuauhtemoc,Masculino,1958-08-27
+Luis,30,18186.34,Jalisco#Puerto Vallarta,Femenino,1977-11-12
+Luis,65,16440.61,Yucatan#Progreso,Masculino,2001-10-21
+Angela,59,46435.81,Yucatan#Merida,Masculino,1986-03-13
+Maria,52,60679.97,Veracruz#Veracruz,Masculino,1960-12-29
+Miguel,38,78731.76,Veracruz#Veracruz,Femenino,1980-11-26
+Juan,57,62466.2,Yucatan#Merida,Masculino,1960-06-10
+Angela,23,84693.87,Nuevo Leon#San Pedro Garza Garcia,Femenino,1983-04-10
+Ana,19,68840.96,Ciudad de Mexico#Cuauhtemoc,Femenino,1986-12-25
+Carmen,36,10861.5,Nuevo Leon#Apodaca,Femenino,1964-03-03
+Sofia,35,93679.46,Yucatan#Progreso,Masculino,2002-05-23
+Jose,58,85465.68,Yucatan#Valladolid,Masculino,1978-06-04
+Miguel,54,52173.4,Jalisco#Zapopan,Masculino,1954-06-15
+Sofia,37,58756.52,Ciudad de Mexico#Cuauhtemoc,Femenino,2005-04-14
+Miguel,64,49229.68,Yucatan#Merida,Femenino,1958-09-10
+Angela,25,92237.03,Ciudad de Mexico#Benito Juarez,Masculino,1955-03-08
+Luis,49,52514.7,Veracruz#Veracruz,Femenino,1964-03-29
+Miguel,25,44224.41,Nuevo Leon#Apodaca,Masculino,1961-02-23
+Maria,48,84429.34,Ciudad de Mexico#Benito Juarez,Femenino,1958-07-22
+Miguel,27,29710.89,Nuevo Leon#Apodaca,Femenino,1994-11-15
+Carmen,43,28949.5,Nuevo Leon#San Pedro Garza Garcia,Masculino,2003-03-05
+Pedro,44,68215.77,Jalisco#Zapopan,Femenino,1965-04-08
+Luis,44,98006.07,Jalisco#Puerto Vallarta,Masculino,1957-04-25
+Juan,18,24178.78,Yucatan#Merida,Masculino,1971-03-03
+Juan,18,40421.29,Ciudad de Mexico#Miguel Hidalgo,Masculino,1950-02-17
+Maria,48,80348.65,Nuevo Leon#Apodaca,Masculino,1982-11-26
+Juan,64,66461.33,Nuevo Leon#Monterrey,Masculino,1976-02-07
+Maria,42,92364.45,Ciudad de Mexico#Benito Juarez,Femenino,1967-08-28
+Sofia,54,63602.76,Jalisco#Guadalajara,Femenino,1984-09-17
+Jose,26,24188.73,Ciudad de Mexico#Benito Juarez,Masculino,1997-11-08
+Carmen,59,95324.11,Veracruz#Veracruz,Masculino,2005-04-11
+Sofia,47,41009.9,Ciudad de Mexico#Miguel Hidalgo,Masculino,1983-08-20
+Juan,52,27595.94,Veracruz#Coatzacoalcos,Masculino,1986-07-05
+Luis,46,47603.8,Veracruz#Coatzacoalcos,Femenino,1962-04-11
+Carmen,56,19827.8,Jalisco#Zapopan,Femenino,1951-11-27
+Jose,51,57271.38,Ciudad de Mexico#Benito Juarez,Femenino,1998-03-05
+Juan,63,27078.73,Veracruz#Veracruz,Masculino,1991-12-15
+Sofia,56,62790.5,Jalisco#Puerto Vallarta,Femenino,1994-02-17
+Maria,47,43429.72,Yucatan#Valladolid,Masculino,2005-01-01
+Angela,21,20289.31,Yucatan#Progreso,Femenino,1952-01-03
+Sofia,38,61519.87,Nuevo Leon#Monterrey,Femenino,1968-02-19
+Pedro,25,21934.15,Jalisco#Guadalajara,Femenino,1980-09-20
+Carmen,61,35459.06,Jalisco#Puerto Vallarta,Masculino,1960-03-17
+Pedro,26,37941.0,Yucatan#Merida,Masculino,1953-03-29
+Luis,43,46664.72,Yucatan#Valladolid,Femenino,1984-08-09
+Jose,56,84074.05,Jalisco#Puerto Vallarta,Masculino,2004-10-16
+Pedro,62,40089.3,Ciudad de Mexico#Benito Juarez,Masculino,1976-05-09
+Angela,23,29749.26,Ciudad de Mexico#Miguel Hidalgo,Femenino,1999-06-16
+Juan,54,22832.64,Nuevo Leon#Monterrey,Masculino,1986-10-10
+Angela,42,92000.22,Jalisco#Guadalajara,Masculino,2005-02-14
+Pedro,29,17015.05,Veracruz#Xalapa,Masculino,1969-03-21
+Pedro,48,30618.46,Veracruz#Coatzacoalcos,Masculino,2004-02-03
+Jose,19,72682.54,Jalisco#Guadalajara,Masculino,1983-06-20
+Luis,41,36775.07,Ciudad de Mexico#Benito Juarez,Femenino,1998-02-02
+Pedro,29,79035.22,Ciudad de Mexico#Cuauhtemoc,Masculino,1990-12-22
+Jose,62,17208.25,Jalisco#Puerto Vallarta,Masculino,1964-12-28
+Miguel,32,49731.78,Nuevo Leon#Apodaca,Femenino,1994-11-30
+Juan,64,15379.47,Yucatan#Progreso,Femenino,1950-05-05
+Pedro,52,34829.03,Ciudad de Mexico#Benito Juarez,Masculino,1993-12-05
+Carmen,56,97296.25,Jalisco#Guadalajara,Masculino,1959-11-22
+Jose,31,61583.33,Veracruz#Veracruz,Femenino,2002-08-11
+Maria,39,28126.74,Veracruz#Xalapa,Femenino,1995-02-06
